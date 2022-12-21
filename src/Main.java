@@ -17,25 +17,23 @@ public class Main {
                     Education.values()[new Random().nextInt(Education.values().length)]));
         }
 
+        //1st condition
         persons.stream()
                 .filter(person -> person.getAge() < 18)
                 .forEach(System.out::println);
 
+        //2nd condition
         persons.stream()
                 .filter(person -> person.getSex().equals(Sex.MAN))
                 .filter(person -> person.getAge() >= 18 && person.getAge() < 27)
                 .forEach(System.out::println);
 
+        //3rd condition
         persons.stream()
                 .filter(person -> person.getEducation().equals(Education.HIGHER))
                 .sorted(Comparator.comparing(Person::getFamily))
-                .filter(person -> person.getSex().equals(Sex.MAN) && person.getAge() >= 18 && person.getAge() < 65)
-                .forEach(System.out::println);
-
-        persons.stream()
-                .filter(person -> person.getEducation().equals(Education.HIGHER))
-                .sorted(Comparator.comparing(Person::getFamily))
-                .filter(person -> person.getSex().equals(Sex.WOMAN) && person.getAge() >= 18 && person.getAge() < 60)
+                .filter(person -> person.getSex().equals(Sex.MAN) && person.getAge() >= 18 && person.getAge() < 65
+                        || person.getSex().equals(Sex.WOMAN) && person.getAge() >= 18 && person.getAge() < 60)
                 .forEach(System.out::println);
 
     }
